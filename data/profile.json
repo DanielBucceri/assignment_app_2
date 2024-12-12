@@ -1,0 +1,21 @@
+[
+    {
+        "username": "Alice",
+        "difficulty": "medium",
+        "high_score": 150,
+        "history": [
+            {
+                "score": 120,
+                "correct": 10,
+                "incorrect": 2,
+                "date": "2024-12-01"
+            },
+            {
+                "score": 150,
+                "correct": 12,
+                "incorrect": 1,
+                "date": "2024-12-05"
+            }
+        ]
+    }
+]
