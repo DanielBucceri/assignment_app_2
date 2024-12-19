@@ -17,5 +17,34 @@
                 "date": "2024-12-05"
             }
         ]
+    },
+    {
+        "username": "Daniel",
+        "difficulty": "medium",
+        "category": "9",
+        "qtype": "multiple",
+        "high_score": 4,
+        "history": [
+            {
+                "score": 1,
+                "correct": 1,
+                "incorrect": 9,
+                "date": "2024-12-17"
+            },
+            {
+                "score": 0,
+                "correct": 0,
+                "incorrect": 10,
+                "date": "2024-12-18"
+            }
+        ]
+    },
+    {
+        "username": "test",
+        "difficulty": "medium",
+        "category": 19,
+        "qtype": "multiple",
+        "high_score": 0,
+        "history": []
     }
 ]
