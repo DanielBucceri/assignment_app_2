@@ -1,11 +1,13 @@
 from player import Player
 from profile_manager import load_or_create_player
-from utility import display_leaderboard_as_table
+from utility import display_leaderboard
+from game_session import GameSession
 
 
 def main():
     username = input("Enter your username: ").strip()
     player = load_or_create_player(username)
+    game = GameSession(player)
 
     while True:
         print("\n1. Play Game\n2. Update Preferences\n3. View Leaderboard\n4. View History\n5. See high score\n6. Quit game")
@@ -13,11 +15,11 @@ def main():
 
         match choice:
             case "1":
-                i =1 # play_game(player) 
+                game.play_game() 
             case "2":
                 player.update_preferences()
             case "3":
-                display_leaderboard_as_table()
+                display_leaderboard()
             case "4":
                 player.display_history()
             case "5":

@@ -18,11 +18,11 @@ def load_or_create_player(username):
             if user.get("username", "").lower() == username.lower():
                 # Return a Player instance initialized with the data
                 print(f"welcome {user.get("username")}")
+                print(f"Your settings are:\nDifficulty: {user.get("difficulty")}\nCategory: {user.get("category")}")
                 return Player(
                     username=user.get("username"),
                     difficulty=user.get("difficulty"),
                     category=user.get("category"),
-                    qtype=user.get("qtype"),
                     high_score=user.get("high_score"),
                     history=user.get("history")
                 )

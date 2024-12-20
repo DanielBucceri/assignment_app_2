@@ -1,6 +1,5 @@
 from datetime import datetime
 import json
-import tabulate
 import pandas as pd
 from utility import choose_from_menu
 
@@ -8,15 +7,14 @@ PROFILE_FILE = "data/profile.json"
 LEADERBOARD_FILE = "data/Leaderboard.json"
 
 class Player:
-    def __init__(self, username, difficulty="medium", high_score=0, qtype="multiple", category=19, history=[]):
+    def __init__(self, username, difficulty="medium", high_score=0, category=19, history=[]):
         self.username = username
         self.difficulty = difficulty
         self.category = category
-        self.qtype = qtype
         self.high_score = high_score
         self.history = history
         
-    def update_preferences(self, username, difficulty, category, qtype):
+    def update_preferences(self, username, difficulty, category):
         self.username = username
         difficulty_input = int(input("Enter corresponding number to select difficulty. 1.easy 2.medium 3.hard: "))
         match difficulty_input:
@@ -25,8 +23,6 @@ class Player:
             case 3: difficulty = "hard"
             case _: difficulty = "medium"  
         category = choose_from_menu()  
-        qtype_input = int(input("Enter 1 for boolean or 2 for multiple choice: "))
-        qtype = "boolean" if qtype_input == 1 else "multiple"
         try:
         # Open and load the JSON file
          with open(PROFILE_FILE, "r") as file:
@@ -34,14 +30,11 @@ class Player:
             # Search for the matching username
             for user in data:
                 if user.get("username").lower() == username.lower():
-                    # Update only the fields that are provided (non-None)
+                    # Update only the fields that are provided
                         if difficulty:
                             user["difficulty"] = difficulty
                         if category:
                             user["category"] = category
-                        if qtype:
-                            user["qtype"] = qtype
-                        
                         with open(PROFILE_FILE, "w") as file:
                             json.dump(data, file, indent=4)
 

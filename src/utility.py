@@ -57,26 +57,31 @@ def choose_from_menu():
             print("Invalid input. Please enter a valid number.")
 
 
-def display_leaderboard_as_table():
-
+def display_leaderboard():
     try:
-        # Read the JSON file
-        with open(LEADERBOARD_FILE, 'r') as file:
+        # Step 1: Load data from profile.json
+        with open(PROFILE_FILE, "r") as file:
             data = json.load(file)
+        
+        leaderboard = [
+            {"username": user["username"], "high_score": user["high_score"]}
+            for user in data # for each item in data (json file). adds to leaderboard list item.[keyValue]
+        ]
+        
+        #  Sort by high_score in descending order
+        sorted_leaderboard = sorted(leaderboard, key=lambda x: x["high_score"], reverse=True)
+        
+        #  Write sorted leaderboard to leaderboard.json
+        with open(LEADERBOARD_FILE, "w") as file:
+            json.dump(sorted_leaderboard, file, indent=4)
 
-        # Check if data is a list of dictionaries
-        if not isinstance(data, list):
-            
-            return print("Invalid Json.")
-
-        # Create a DataFrame from the data
-        df = pd.DataFrame(data)
-
-        # Use tabulate to print the DataFrame as a table
-        print(tabulate(df, headers='keys', tablefmt='grid'))
-        input("Press enter to continue...")
-
-    except FileNotFoundError:
-        print(f"Error: File '{LEADERBOARD_FILE}' not found.")
+        #  Display leaderboard to terminal using pandas and tabulate
+        df = pd.DataFrame(sorted_leaderboard)
+        print(tabulate(df, headers="keys", tablefmt="grid"))
+    
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
     except json.JSONDecodeError:
-        print(f"Error: File '{LEADERBOARD_FILE}' is not valid Json .")
+        print("Error: The profile file contains invalid JSON.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
