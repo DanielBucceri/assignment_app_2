@@ -175,41 +175,6 @@ import time
             
 # print(display_history("Daniel"))
 
-
-from tabulate import tabulate
-import json
-import pandas as pd
-PROFILE_FILE = "data/profile.json"
-LEADERBOARD_FILE = "data/Leaderboard.json"
-from tabulate import tabulate
-
-def display_leaderboard_as_table(json_file):
-
-    try:
-        # Read the JSON file
-        with open(json_file, 'r') as file:
-            data = json.load(file)
-
-        # Check if data is a list of dictionaries
-        if not isinstance(data, list):
-            
-            return print("Invalid Json.")
-
-        # Create a DataFrame from the data
-        df = pd.DataFrame(data)
-
-        # Use tabulate to print the DataFrame as a table
-        print(tabulate(df, headers='keys', tablefmt='grid'))
-
-    except FileNotFoundError:
-        print(f"Error: File '{json_file}' not found.")
-    except json.JSONDecodeError:
-        print(f"Error: File '{json_file}' is not valid Json .")
-
-# Example usage
-if __name__ == "__main__":
-    display_leaderboard_as_table(LEADERBOARD_FILE)
-
 # def display_history(username):
 #     """
 #     Opens the profile.json file, looks for the player's username stored in the parameter,
@@ -233,5 +198,72 @@ if __name__ == "__main__":
 
 # # Example usage
 # display_history("Daniel")
+
+
+import os
+
+# Define the base directory
+base_dir = r"C:\Users\danb3\VSCode-Projects\assignment_app_2"
+
+# Folders to process
+folders = ['data', 'src']
+
+# Output file path
+output_file = os.path.join(base_dir, 'output.txt')
+
+def write_file_contents(folder, filepath, outfile):
+    """
+    Writes the content of a file to the output file with folder and file name.
+    """
+    outfile.write(f"Folder: {folder}\n")
+    outfile.write(f"File: {filepath}\n")
+    outfile.write("Content:\n")
+    with open(os.path.join(base_dir, folder, filepath), 'r', encoding='utf-8') as f:
+        content = f.read()
+        outfile.write(content + "\n\n")  # Add extra newline for readability
+
+def get_structure(base, folders):
+    """
+    Generates a simple folder/file structure.
+    """
+    structure = ""
+    for folder in folders:
+        structure += f"{folder}/\n"
+        folder_path = os.path.join(base, folder)
+        for root, dirs, files in os.walk(folder_path):
+            # Calculate indentation based on depth
+            level = root.replace(folder_path, '').count(os.sep)
+            indent = '    ' * (level + 1)
+            for d in dirs:
+                structure += f"{indent}{d}/\n"
+            for f in files:
+                structure += f"{indent}{f}\n"
+    return structure
+
+def main():
+    with open(output_file, 'w', encoding='utf-8') as outfile:
+        # Iterate through each specified folder
+        for folder in folders:
+            folder_path = os.path.join(base_dir, folder)
+            if not os.path.exists(folder_path):
+                print(f"Folder '{folder}' does not exist in the base directory.")
+                continue
+            # List all files in the folder
+            for root, dirs, files in os.walk(folder_path):
+                for file in files:
+                    # Get relative file path
+                    rel_dir = os.path.relpath(root, folder_path)
+                    rel_file = os.path.join(rel_dir, file) if rel_dir != '.' else file
+                    write_file_contents(folder, rel_file, outfile)
+        
+        # After writing all contents, append the structure
+        outfile.write("Folder/File Structure:\n")
+        structure = get_structure(base_dir, folders)
+        outfile.write(structure)
+
+    print(f"Contents and structure have been written to {output_file}")
+
+if __name__ == "__main__":
+    main()
 
 

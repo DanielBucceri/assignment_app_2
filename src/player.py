@@ -14,7 +14,7 @@ class Player:
         self.high_score = high_score
         self.history = history
         
-    def update_preferences(self, username, difficulty, category):
+    def update_preferences(self):
         self.username = username
         difficulty_input = int(input("Enter corresponding number to select difficulty. 1.easy 2.medium 3.hard: "))
         match difficulty_input:
