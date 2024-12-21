@@ -1,0 +1,496 @@
+Folder: data
+File: data\profile.json
+Content:
+[
+    {
+        "username": "Alice",
+        "difficulty": "medium",
+        "high_score": 150,
+        "history": [
+            {
+                "score": 120,
+                "correct": 10,
+                "incorrect": 2,
+                "date": "2024-12-01"
+            },
+            {
+                "score": 150,
+                "correct": 12,
+                "incorrect": 1,
+                "date": "2024-12-05"
+            }
+        ]
+    },
+    {
+        "username": "Daniel",
+        "difficulty": "medium",
+        "category": "9",
+        "qtype": "multiple",
+        "high_score": 4,
+        "history": [
+            {
+                "score": 1,
+                "correct": 1,
+                "incorrect": 9,
+                "date": "2024-12-17"
+            },
+            {
+                "score": 0,
+                "correct": 0,
+                "incorrect": 10,
+                "date": "2024-12-18"
+            }
+        ]
+    },
+    {
+        "username": "test",
+        "difficulty": "medium",
+        "category": 19,
+        "qtype": "multiple",
+        "high_score": 0,
+        "history": []
+    }
+]
+
+
+Folder: data
+File: data\Leaderboard.json
+Content:
+[
+    {
+        "username": "Alice",
+        "high_score": 150
+    },
+    {
+        "username": "Daniel",
+        "high_score": 4
+    }
+]
+
+
+Folder: src
+File: src\player.py
+Content:
+from datetime import datetime
+import json
+import pandas as pd
+from utility import choose_from_menu
+
+PROFILE_FILE = "data/profile.json"
+LEADERBOARD_FILE = "data/Leaderboard.json"
+
+class Player:
+    def __init__(self, username, difficulty="medium", high_score=0, category=19, history=[]):
+        self.username = username
+        self.difficulty = difficulty
+        self.category = category
+        self.high_score = high_score
+        self.history = history
+        
+    def update_preferences(self):
+        self.username = username
+        difficulty_input = int(input("Enter corresponding number to select difficulty. 1.easy 2.medium 3.hard: "))
+        match difficulty_input:
+            case 1: difficulty = "easy"
+            case 2: difficulty = "medium"
+            case 3: difficulty = "hard"
+            case _: difficulty = "medium"  
+        category = choose_from_menu()  
+        try:
+        # Open and load the JSON file
+         with open(PROFILE_FILE, "r") as file:
+            data = json.load(file)
+            # Search for the matching username
+            for user in data:
+                if user.get("username").lower() == username.lower():
+                    # Update only the fields that are provided
+                        if difficulty:
+                            user["difficulty"] = difficulty
+                        if category:
+                            user["category"] = category
+                        with open(PROFILE_FILE, "w") as file:
+                            json.dump(data, file, indent=4)
+
+                print(f"Preferences for'{username}' updated successfully.")
+                return True
+            else:
+                print(f"User '{self.username}' not found.")
+                return False
+        except FileNotFoundError:
+            return print(f"Error: File '{PROFILE_FILE}' not found.")
+        except json.JSONDecodeError:
+            return print(f"Error: File '{PROFILE_FILE}' is not a valid JSON file.")
+
+
+
+    def display_high_score(self):
+            """
+            Opens the profile.json file, looks for the player's username stored in the instance,
+            and displays their high score
+            """
+            try:
+                with open(PROFILE_FILE, "r") as file:
+                    data = json.load(file)
+                player_data = next((player for player in data if player["username"].lower() == self.username.lower()), None)
+                if player_data:
+                    # if player is found display username and high score
+                    print(f"Player: {player_data['username']}")
+                    print(f"High Score: {player_data['high_score']}")
+                else:
+                    print(f"Player '{self.username}' not found in the profile data.")
+            
+            except FileNotFoundError:
+                print(f"Error: '{PROFILE_FILE}' not found.")
+            except json.JSONDecodeError:
+                print(f"Error: '{PROFILE_FILE}' is not a valid JSON file.")
+                
+                
+    def display_history(self):
+            """
+            Opens the profile.json file, looks for the player's username stored in the instance,
+            and displays their history in a table format using tabluate.
+            """
+            try:
+            # Open and load the profile data from JSON
+                with open(PROFILE_FILE, "r") as file:
+                    data = json.load(file)
+
+                # Find the player data by username
+                player_data = next((player for player in data if player["username"].lower() == self.username.lower()), None)
+                    # Prepare the table data for tabulate
+                    
+                if player_data.get("history"):
+                            print(f"Player: {player_data['username']} History:")
+                            # Prepare table data
+                            df = pd.DataFrame(player_data.get("history"))
+                            from tabulate import tabulate
+                            print(tabulate(df, headers="keys", tablefmt="grid"))
+                else:
+                    print(f"No history found for player '{username}'.")
+                        
+            except FileNotFoundError:
+                            print(f"Error: '{PROFILE_FILE}' not found.")
+            except json.JSONDecodeError:
+                            print(f"Error: '{PROFILE_FILE}' is not a valid JSON file.")
+            input("Press Enter to continue....")
+
+
+
+username = 'Daniel'
+player = Player(username)
+
+
+
+Folder: src
+File: src\profile_manager.py
+Content:
+import json
+from player import Player
+
+PROFILE_FILE = "data/profile.json"
+LEADERBOARD_FILE = "data/Leaderboard.json"
+
+def load_or_create_player(username):
+    """
+    Load an existing player by username or create a new one if not found.
+    """
+    try:
+        # Open and load the JSON file
+        with open(PROFILE_FILE, "r") as file:
+            data = json.load(file)
+
+        # Search for the matching username
+        for user in data:
+            if user.get("username", "").lower() == username.lower():
+                # Return a Player instance initialized with the data
+                print(f"welcome {user.get("username")}")
+                print(f"Your settings are:\nDifficulty: {user.get("difficulty")}\nCategory: {user.get("category")}")
+                return Player(
+                    username=user.get("username"),
+                    difficulty=user.get("difficulty"),
+                    category=user.get("category"),
+                    high_score=user.get("high_score"),
+                    history=user.get("history")
+                )
+        # If username is not found, create a new Player and add defaults to file
+        new_player = Player(username)
+        data.append(vars(new_player))
+        print(f"Player {username} created")
+
+        # Save updated data back to the JSON file
+        with open(PROFILE_FILE, "w") as file:
+            json.dump(data, file, indent=4)
+            return new_player
+
+    except FileNotFoundError:
+        print(f"Error: File '{PROFILE_FILE}' not found. Creating profiles.json")
+        # Create a default profile structure if the file doesn't exist
+        data = []
+        new_player = Player(username)
+        data.append(vars(new_player))
+        with open(PROFILE_FILE, "w") as file:
+            json.dump(data, file, indent=4)
+        return new_player
+
+    except json.JSONDecodeError:
+        print(f"Error: File '{PROFILE_FILE}' is not a valid JSON file.")
+        return new_player
+
+# Test the function
+if __name__ == "__main__":
+    test_player = load_or_create_player("test")
+    print(f"Player loaded or created: {test_player}")
+
+
+
+
+Folder: src
+File: src\main.py
+Content:
+from player import Player
+from profile_manager import load_or_create_player
+from utility import display_leaderboard
+from game_session import GameSession
+
+
+def main():
+    username = input("Enter your username: ").strip()
+    player = load_or_create_player(username)
+    game = GameSession(player)
+
+    while True:
+        print("\n1. Play Game\n2. Update Preferences\n3. View Leaderboard\n4. View History\n5. See high score\n6. Quit game")
+        choice = input("Choose an option: ").strip()
+
+        match choice:
+            case "1":
+                game.play_game() 
+            case "2":
+                player.update_preferences()
+            case "3":
+                display_leaderboard()
+            case "4":
+                player.display_history()
+            case "5":
+                player.display_high_score()
+            case "6":
+                print("Cya!")
+                break
+            case _:
+                print("Invalid choice.")
+                
+                
+if __name__ == "__main__":
+    main()  
+
+
+Folder: src
+File: src\utility.py
+Content:
+import json
+from tabulate import tabulate   
+import pandas as pd
+PROFILE_FILE = "data/profile.json"
+LEADERBOARD_FILE = "data/Leaderboard.json"
+
+def choose_from_menu():
+    """
+    Displays a menu of key-value pairs and prompts the user to choose an option by entering the corresponding number.
+    
+    Returns:
+        tuple: The chosen number and corresponding catgeory .
+    """
+    # Define the key-value pairs
+    categories = {
+    9: "General Knowledge",
+    10: "Entertainment: Books",
+    11: "Entertainment: Film",
+    12: "Entertainment: Music",
+    13: "Entertainment: Musicals & Theatres",
+    14: "Entertainment: Television",
+    15: "Entertainment: Video Games",
+    16: "Entertainment: Board Games",
+    17: "Science & Nature",
+    18: "Science: Computers",
+    19: "Science: Mathematics",
+    20: "Mythology",
+    21: "Sports",
+    22: "Geography",
+    23: "History",
+    24: "Politics",
+    25: "Art",
+    26: "Celebrities",
+    27: "Animals",
+    28: "Vehicles",
+    29: "Entertainment: Comics",
+    30: "Science: Gadgets",
+    31: "Entertainment: Japanese Anime & Manga",
+    32: "Entertainment: Cartoon & Animations"
+}
+
+
+    # Display the menu
+    print("Please choose question category:")
+    for key, value in categories.items():
+        print(f"{key}: {value}")
+
+    # Prompt the user to enter a number
+    while True:
+        try:
+            choice = int(input("Enter the number corresponding to your category choice: "))
+            if choice in categories:
+                return categories[choice], choice
+            else:
+                print("Invalid choice. Please choose a valid number from the menu.")
+        except ValueError:
+            print("Invalid input. Please enter a valid number.")
+
+
+def display_leaderboard():
+    try:
+        # Step 1: Load data from profile.json
+        with open(PROFILE_FILE, "r") as file:
+            data = json.load(file)
+        
+        leaderboard = [
+            {"username": user["username"], "high_score": user["high_score"]}
+            for user in data # for each item in data (json file). adds to leaderboard list item.[keyValue]
+        ]
+        
+        #  Sort by high_score in descending order
+        sorted_leaderboard = sorted(leaderboard, key=lambda x: x["high_score"], reverse=True)
+        
+        #  Write sorted leaderboard to leaderboard.json
+        with open(LEADERBOARD_FILE, "w") as file:
+            json.dump(sorted_leaderboard, file, indent=4)
+
+        #  Display leaderboard to terminal using pandas and tabulate
+        df = pd.DataFrame(sorted_leaderboard)
+        print(tabulate(df, headers="keys", tablefmt="grid"))
+    
+    except FileNotFoundError as e:
+        print(f"Error: {e}")
+    except json.JSONDecodeError:
+        print("Error: The profile file contains invalid JSON.")
+    except Exception as e:
+        print(f"An unexpected error occurred: {e}")
+
+
+
+Folder: src
+File: src\game_session.py
+Content:
+from inputimeout import inputimeout, TimeoutOccurred
+import requests
+from player import Player
+import random
+import json
+from datetime import datetime
+
+TRIVIA_API_URL = "https://opentdb.com/api.php"
+PROFILE_FILE = "data/profile.json"
+
+class GameSession:
+    def __init__(self, player):
+        self.player = player 
+        self.timeout = 15
+        self.category  = player.category
+        self.difficulty = player.difficulty
+        
+        self.score = 0
+        self.incorrect  = 0 
+        self.correct = 0
+        self.difficulty_point = 1
+
+    def play_game(self):
+        params = {
+            "amount": 10,
+            "category": self.category,
+            "difficulty": self.difficulty,
+            "type": "multiple"
+        }
+        try:
+            response = requests.get(TRIVIA_API_URL, params=params, timeout=5)
+            response.raise_for_status()
+            data = response.json()
+            if data["response_code"] == 0:
+                questions = data["results"]
+                for q in questions:
+                    print(f"\nQuestion: {q['question']}")
+                    choices = q["incorrect_answers"]
+                    choices.append(q["correct_answer"])
+                    random.shuffle(choices)
+                    for i, option in enumerate(choices, 1):
+                        print(f"{i} {option}")
+                    try:
+                        answer = int(inputimeout(prompt=f"enter choice (1 - 4) You have {self.timeout} seconds..", timeout=self.timeout)) # updated timer for each game mode
+                        if option[answer - 1] == q["correct_answer"]:
+                            print("Correct!")
+                            self.score += self.difficulty_point # update score by amount based on difficulty
+                            self.correct += 1
+                            return True
+                        else:
+                            print(f"Wrong! Correct answer: {q['correct_answer']}")
+                            self.incorrect += 1
+                        return False
+                    except (ValueError, IndexError):
+                        print("Invalid input. Counted as incorrect.")
+                        return False
+                    except (TimeoutError):
+                         print("Out of time! Counted as incorrect.")
+        except requests.exceptions.RequestException as e:
+            print(f"An error occurred while making the API call: {e}")
+        except KeyError:
+            print("Unexpected response format from the API. Missing expected keys.")
+        except json.JSONDecodeError:
+            print("Failed to decode json")
+        record_game = {
+                "score": self.score,
+                "correct": self.correct,
+                "incorrect": self.incorrect,
+                "date": datetime.datetime.now().strftime("%Y-%m-%d")
+            }
+        with open(PROFILE_FILE, "r") as f:
+            data = json.load(f)
+            for user in data:
+                if user.get("high_score") < self.score:
+                    user["high_score"] = self.score
+                if self.player.username == user["username"]:
+                    user["history"].append(record_game)
+        with open(PROFILE_FILE, "w") as f:
+            json.dump(data, f, indent=4)
+     
+    
+
+class MediumGameMode(GameSession):
+    def __init__(self, player):
+        super().__init__(self, player)
+        self.timeout = 10
+        self.difficulty_point = 2
+        
+    def play_game(self):
+        super().play_game()
+        
+class HardGameMode(GameSession):
+    def __init__(self, player):
+        super().__init__(self, player)
+        self.timeout = 7 
+        self.difficulty_point = 3
+        
+    def play_game(self):
+        super().play_game()
+    
+                    
+
+
+Folder/File Structure:
+
+data/
+    Leaderboard.json
+    profile.json
+src/
+    game_session.py
+    main.py
+    player.py
+    profile_manager.py
+    utility.py

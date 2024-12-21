@@ -7,9 +7,6 @@ LEADERBOARD_FILE = "data/Leaderboard.json"
 def choose_from_menu():
     """
     Displays a menu of key-value pairs and prompts the user to choose an option by entering the corresponding number.
-    
-    Returns:
-        tuple: The chosen number and corresponding catgeory .
     """
     # Define the key-value pairs
     categories = {
@@ -58,6 +55,9 @@ def choose_from_menu():
 
 
 def display_leaderboard():
+    """
+    Adds usernames and high scores to leaderboard json in descending order
+    """
     try:
         # Step 1: Load data from profile.json
         with open(PROFILE_FILE, "r") as file:
@@ -85,3 +85,24 @@ def display_leaderboard():
         print("Error: The profile file contains invalid JSON.")
     except Exception as e:
         print(f"An unexpected error occurred: {e}")
+
+def read_json(file):
+    try:
+    # Open and load the JSON file
+        with open(file, "r") as f:
+            data = json.load(f)
+        return data
+    except FileNotFoundError:
+        return print(f"Error: File '{PROFILE_FILE}' not found.")
+    except json.JSONDecodeError:
+        return print(f"Error: File '{PROFILE_FILE}' is not a valid JSON file.")
+    
+def save_json(file_path, data):
+    """
+    Saves data to a JSON file.
+    """
+    try:
+        with open(file_path, "w") as file:
+            json.dump(data, file, indent=4)
+    except Exception as e:
+        print(f"Error: Could not save data to '{file_path}' ({e})")
