@@ -144,6 +144,12 @@
                 "correct": 0,
                 "incorrect": 0,
                 "date": "2024-12-22"
+            },
+            {
+                "score": 0,
+                "correct": 0,
+                "incorrect": 10,
+                "date": "2024-12-22"
             }
         ]
     },
@@ -157,6 +163,13 @@
     },
     {
         "username": "DDaniel",
+        "difficulty": "medium",
+        "category": 19,
+        "high_score": 0,
+        "history": []
+    },
+    {
+        "username": "Danie;l",
         "difficulty": "medium",
         "category": 19,
         "high_score": 0,

@@ -1,17 +1,23 @@
 from player import load_or_create_player
 from utility import display_leaderboard
-from game_session import GameSession
+from game_session import GameSession, MediumGameMode, HardGameMode
 
 
 def main():
     username = input("Enter your username: ").strip()
     player = load_or_create_player(username)
-    game = GameSession(player)
+    #instantiate game session based on difficulty else default game
+    if player.difficulty.lower() == "medium":
+        game = MediumGameMode(player)
+    elif player.difficulty.lower() == "hard":
+        game = HardGameMode(player)
+    else:
+        game = GameSession(player)
 
     while True:
         print(
             "\n1. Play Game\n2. Update Preferences\n3. View Leaderboard\n"
-            "4. View History\n5. See high score\n6. Quit game"
+            "4. View History\n5. See high score\n6. Quit game\n"
         )
         choice = input("Choose an option: ").strip()
 
@@ -31,7 +37,6 @@ def main():
                 break
             case _:
                 print("Invalid choice.")
-
 
 if __name__ == "__main__":
     main()

@@ -42,23 +42,16 @@ class GameSession:
                     for i, option in enumerate(choices, 1):
                         print(f"{i} {option}")
                     try:
-                        answer = int(
-                            inputimeout(
-                                prompt=f"enter choice (1 - 4) You have {self.timeout} seconds..",
-                                timeout=self.timeout,
-                            )
-                        )  # updated timer for each game mode
+                        answer = int(inputimeout(prompt=f"enter choice (1 - 4) You have {self.timeout} seconds: ",timeout=self.timeout,))  # updated timer for each game mode
                         if option[answer - 1] == q["correct_answer"]:
                             print("Correct!")
                             self.score += (
                                 self.difficulty_point
                             )  # update score by amount based on difficulty
-                            self.correct += 1
-                            return True
+                            self.correct += 1 
                         else:
                             print(f"Wrong! Correct answer: {q['correct_answer']}")
                             self.incorrect += 1
-                        return False
                     except (ValueError, IndexError):
                         print("Invalid input. Counted as incorrect.")
                         return False
@@ -73,12 +66,14 @@ class GameSession:
             print("Unexpected response format from the API. Missing expected keys.")
         except json.JSONDecodeError:
             print("Failed to decode json")
+        print(f"Game over. You scored {self.score} points. Correct: {self.correct} incorrect: {self.incorrect}")
         record_game = {
             "score": self.score,
             "correct": self.correct,
             "incorrect": self.incorrect,
             "date": datetime.now().strftime("%Y-%m-%d"),
         }
+        
         data = read_json(PROFILE_FILE)
         for user in data:
             if user.get("high_score") < self.score:

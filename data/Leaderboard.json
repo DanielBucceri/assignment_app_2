@@ -6,5 +6,13 @@
     {
         "username": "Daniel",
         "high_score": 4
+    },
+    {
+        "username": "test",
+        "high_score": 0
+    },
+    {
+        "username": "DDaniel",
+        "high_score": 0
     }
 ]
