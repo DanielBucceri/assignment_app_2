@@ -28,7 +28,7 @@ def load_or_create_player(username):
     # If username is not found, create a new Player
     new_player = Player(username)
     data.append(vars(new_player))
-    print(f"Player {username} created.")
+    print(f"\nPlayer {username} created.")
 
     # Save the updated data using save_json
     save_json(PROFILE_FILE, data)
@@ -36,9 +36,7 @@ def load_or_create_player(username):
 
 class Player:
     def __init__(
-        self, username, difficulty="medium", high_score=0,
-        category=19, history=[]
-    ):
+        self, username, difficulty="medium", high_score=0, category=19, history=[]):
         self.username = username
         self.difficulty = difficulty
         self.category = category
@@ -72,7 +70,7 @@ class Player:
                     user["category"] = category
                 save_json(PROFILE_FILE, data)  # save data back to json
 
-            print(f"Preferences for'{self.username}' updated successfully.")
+            print(f"\nPreferences for'{self.username}' updated successfully.")
             return True
         else:
             print(f"User '{self.username}' not found.")
@@ -96,7 +94,7 @@ class Player:
             )
             if player_data:
                 # if player is found display username and high score
-                print(f"Player: {player_data['username']}")
+                print(f"\nPlayer: {player_data['username']}")
                 print(f"High Score: {player_data['high_score']}")
             else:
                 print(f"Player '{self.username}'"
@@ -121,13 +119,13 @@ class Player:
             )
             # create the table data for tabulate
         if player_data.get("history"):
-            print(f"Player: {player_data['username']} History:")
+            print(f"\nPlayer: {player_data['username']}\nHistory:")
             # Prepare table data
             df = pd.DataFrame(player_data.get("history"))
             from tabulate import tabulate
 
             print(tabulate(df, headers="keys", tablefmt="grid"))
         else:
-            print(f"No history found for player '{self.username}'.")
-        input("Press Enter to continue....")
+            print(f"\nNo history found for player '{self.username}'.")
+        input("\nPress Enter to continue....")
 

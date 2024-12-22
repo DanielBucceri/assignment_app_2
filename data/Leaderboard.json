@@ -5,14 +5,34 @@
     },
     {
         "username": "Daniel",
-        "high_score": 4
+        "high_score": 10
     },
     {
         "username": "test",
-        "high_score": 0
+        "high_score": 10
     },
     {
         "username": "DDaniel",
+        "high_score": 10
+    },
+    {
+        "username": "Danie;l",
+        "high_score": 10
+    },
+    {
+        "username": "dadasdDAniel",
+        "high_score": 10
+    },
+    {
+        "username": "Dsdfnsdlafh",
+        "high_score": 6
+    },
+    {
+        "username": "dasfasd",
+        "high_score": 0
+    },
+    {
+        "username": "Daneil",
         "high_score": 0
     }
 ]

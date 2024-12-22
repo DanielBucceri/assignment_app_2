@@ -23,7 +23,7 @@
         "difficulty": "medium",
         "category": "9",
         "qtype": "multiple",
-        "high_score": 4,
+        "high_score": 10,
         "history": [
             {
                 "score": 1,
@@ -150,6 +150,18 @@
                 "correct": 0,
                 "incorrect": 10,
                 "date": "2024-12-22"
+            },
+            {
+                "score": 4,
+                "correct": 2,
+                "incorrect": 8,
+                "date": "2024-12-22"
+            },
+            {
+                "score": 0,
+                "correct": 0,
+                "incorrect": 0,
+                "date": "2024-12-22"
             }
         ]
     },
@@ -158,18 +170,72 @@
         "difficulty": "medium",
         "category": 19,
         "qtype": "multiple",
-        "high_score": 0,
+        "high_score": 10,
         "history": []
     },
     {
         "username": "DDaniel",
         "difficulty": "medium",
         "category": 19,
-        "high_score": 0,
+        "high_score": 10,
         "history": []
     },
     {
         "username": "Danie;l",
+        "difficulty": "medium",
+        "category": 19,
+        "high_score": 10,
+        "history": []
+    },
+    {
+        "username": "dadasdDAniel",
+        "difficulty": "medium",
+        "category": 19,
+        "high_score": 10,
+        "history": [
+            {
+                "score": 4,
+                "correct": 2,
+                "incorrect": 8,
+                "date": "2024-12-22"
+            },
+            {
+                "score": 10,
+                "correct": 5,
+                "incorrect": 15,
+                "date": "2024-12-22"
+            },
+            {
+                "score": 10,
+                "correct": 5,
+                "incorrect": 15,
+                "date": "2024-12-22"
+            }
+        ]
+    },
+    {
+        "username": "dasfasd",
+        "difficulty": "medium",
+        "category": 19,
+        "high_score": 0,
+        "history": []
+    },
+    {
+        "username": "Dsdfnsdlafh",
+        "difficulty": "medium",
+        "category": 19,
+        "high_score": 6,
+        "history": [
+            {
+                "score": 6,
+                "correct": 3,
+                "incorrect": 7,
+                "date": "2024-12-22"
+            }
+        ]
+    },
+    {
+        "username": "Daneil",
         "difficulty": "medium",
         "category": 19,
         "high_score": 0,
