@@ -23,7 +23,7 @@ class GameSession:
 
     def play_game(self):
         params = {
-            "amount": 500000,
+            "amount": 10,
             "category": self.category,
             "difficulty": self.difficulty,
             "type": "multiple",
@@ -64,6 +64,9 @@ class GameSession:
                         return False
                     except TimeoutOccurred:
                         print("Out of time! Counted as incorrect.")
+            if data["response_code"] == 1:
+                print("No questions found for your criteria. Try changing category or difficulty.")
+                return
         except requests.exceptions.RequestException as e:
             print(f"An error occurred while making the API call: {e}")
         except KeyError:
@@ -74,7 +77,7 @@ class GameSession:
             "score": self.score,
             "correct": self.correct,
             "incorrect": self.incorrect,
-            "date": datetime.datetime.now().strftime("%Y-%m-%d"),
+            "date": datetime.now().strftime("%Y-%m-%d"),
         }
         data = read_json(PROFILE_FILE)
         for user in data:
@@ -82,7 +85,7 @@ class GameSession:
                 user["high_score"] = self.score
             if self.player.username == user["username"]:
                 user["history"].append(record_game)
-        save_json(data)
+        save_json(PROFILE_FILE, data)
 
 
 class MediumGameMode(GameSession):

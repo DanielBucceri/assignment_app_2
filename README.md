@@ -12,6 +12,11 @@ Welcome to the Trivia Game Application! This project is a CLI trivia game using 
 - Integration with Open Trivia API for questions.
 - Json file based storage for profiles and scores.
 
+## important
+
+-Some categories and difficulty levels may have limited questions. Experiment with different preferences if no questions are returned.
+Boolean game mode has been removed due to the very limited number of available questions.
+
 ## Installation
 
 ### Prerequisites
