@@ -6,12 +6,33 @@ from datetime import datetime
 from utility import read_json, save_json
 import html
 
+# API endpoint for pulling trivia questions from the api
 TRIVIA_API_URL = "https://opentdb.com/api.php"
+
+# Path to the profile JSON file storing player data
 PROFILE_FILE = "data/profile.json"
 
 
 class GameSession:
+    """
+    Handles a game session for a player.
+
+    Attributes:
+        player (class): The player object.
+        timeout (int): Time limit for answering a question (based on difficulty).
+        category (int): The category of questions pulled in.
+        difficulty (str): The difficulty level. Pulled in from player profile json if set otherwise default value
+        score (int): Players score for the session. Incremented points based on correct questions answered and diffuculty
+        incorrect (int): Number of incorrect answers.
+        correct (int): Number of correct answers.
+        difficulty_point (int): Points per correct answer based on difficulty.
+    """
     def __init__(self, player):
+        """
+    Initializes a GameSession instance.
+
+    Args: player (Player): Loads the player class, pulling in profile preferences.
+        """
         self.player = player
         self.timeout = 15
         self.category = player.category
@@ -23,6 +44,15 @@ class GameSession:
         self.difficulty_point = 1
 
     def play_game(self):
+        """
+    Starts the game, fetching and presenting questions based on user profile.
+
+    Retrieves 10 or more trivia questions based on the players selected category
+    and difficulty. Handles user input for answers and keeps track of
+    scores, correct/incorrect responses, and updates player history.
+
+    Returns: None
+    """
         params = {
             "amount": 10,
             "category": self.category,
@@ -57,7 +87,7 @@ class GameSession:
                             self.incorrect += 1
                     except (ValueError, IndexError):
                         print("Invalid input. Counted as incorrect.")
-                        return False
+                        self.incorrect += 1 
                     except TimeoutOccurred:
                         print("\nOut of time! Counted as incorrect.")
             if data["response_code"] == 1:
@@ -91,6 +121,10 @@ class GameSession:
 
 
 class MediumGameMode(GameSession):
+    """
+    Inherited from GameSession class. Medium difficulty settings applied.
+    Overwrites to increases GameSession timeout and difficulty_point.
+    """
     def __init__(self, player):
         super().__init__(player)
         self.timeout = 10
@@ -101,6 +135,10 @@ class MediumGameMode(GameSession):
 
 
 class HardGameMode(GameSession):
+    """
+    Inherited from GameSession class. Hard difficulty settings applied.
+    Overwrites to increase GameSession timeout and difficulty_point.
+    """
     def __init__(self, player):
         super().__init__(player)
         self.timeout = 7

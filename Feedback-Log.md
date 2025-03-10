@@ -12,7 +12,8 @@ This log tracks documentation reviews, feedback received, and improvements made.
   - Missing docstrings for GameSession, MediumGameMode, and HardGameMode explaining their purpose  
   - Methods inside GameSession don’t have docstrings describing what they do, their parameters, and return values  
   - TRIVIA_API_URL and PROFILE_FILE constants aren’t explained  
-- **Assigned Developer:** Jared  
+  - 
+- **Assigned Developer:** Daniel  
 - **Actions Taken:**
   -
   -
