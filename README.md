@@ -2,7 +2,7 @@
 
 ## Overview
 
-Welcome to the Trivia Game Application! This project is a CLI trivia game using the Open Trivia DB API where players can answer questions, track scores, and compet on a leaderboard. Players can also set preferences such as question categories and difficulty levels for different game modes.
+Welcome to the Trivia Game Application! This project is a CLI trivia game using the Open Trivia DB API where players can answer questions, track scores, and compete on a leaderboard. Players can also set preferences such as question categories and difficulty levels for different game modes.
 
 ## Features
 
