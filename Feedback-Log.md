@@ -60,7 +60,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Checked By:** Daniel
 - **Date:**  11/5/25
 - **Final Feedback:**
-  -  All requested fixes have been correctly implemented
+  - All requested fixes have been correctly implemented
   - Docstrings are now clear and properly describe function behavior
   - Error handling in display_history is implemented, preventing incorrect lookups
   - Username case sensitivity is now correctly handled
@@ -82,18 +82,24 @@ This log tracks documentation reviews, feedback received, and improvements made.
   - No description of how errors and valdiation are handled. Requires description on process if user inputs invalid info and any feedback given to the user.
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
-- **Date Actioned:**  
+- Added a detailed docstring to the main function, describing its purpose, expected user inputs/outputs, and error handling. 
+- added comments explaining how the username is read, trimmed, and how the correct GameSession subclass is instantiated.
+- Documented error handling for invalid menu choices both in the docstring and in the code using print("Invalid choice.").
+- **Date Actioned:** 11/3/25 
 
 ### Second Review
-- **Checked By:**  
-- **Date:**  
+
+- **Checked By:** Daniel 
+- **Date:**  11/3/25
 - **Final Feedback:**  
-  -  
-- **Fix Needed?** Yes / No  
+  - The main function now has a clear docstring describing its purpose, expected user inputs/outputs, and error handling.
+  - Comments clarify how the username is read and trimmed, as well as how the correct GameSession subclass is instantiated.
+  - The error handling for invalid menu choices is explained in the docstring
+- **Fix Needed?** Yes / No   | No
 - **Assigned Developer:**  
 - **Fix Implemented:**  
-- **Final Validation Date:**  
-- **Final Status:** Done / Needs Further Review  
+- **Final Validation Date:**  11/3/25
+- **Final Status:** Done / Needs Further Review  | Done
 
 ---
 
