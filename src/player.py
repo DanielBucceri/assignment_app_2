@@ -6,7 +6,7 @@ LEADERBOARD_FILE = "data/Leaderboard.json"
 
 def load_or_create_player(username):
     """
-    Load an existing player by username from JSON or create a new one if not found.
+    Load an existing player by username from JSON or create a new one if not found. Player usernames are case insensitive requiring uniqueness
     
     Parameters: 
      username (str): Username of the player.
@@ -139,9 +139,9 @@ class Player:
                 (
                     player
                     for player in data
-                    if player["username"].lower() == self.username.lower()
+                    if player["username"] == self.username  # removed self.username.lower() as usernames are case sensitive
                 ),
-                None,
+                None
             )
             # create the table data for tabulate
         if not player_data:
