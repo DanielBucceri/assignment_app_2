@@ -46,7 +46,14 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
 - 
-- **Date Actioned:**  
+- **Date Actioned:**  11/3/25
+- Updated load_or_create_player docstring to include parameter, return type details and clarify username case insensitivity
+- Added detailed docstrings for all Player class methods update_preferences, display_high_score and display_history
+- clarified when load_or_create_player is called with a non existing username new user is created with default settings
+- Expanded the update_preferences docstring to describe the exact user prompts and JSON updating flow
+- fixed bug in display_history converting username to lower. Usernames are case sensitive. removed .toLower
+- Corrected display_history method to include error handling and message for the scenario where a user isn't found in the JSON file
+- Committed all changes to the player.py_review branch, pushed to GitHub, and moved the issue into "Request Review" column in the Kanban project for final review
 
 ### Second Review
 
@@ -135,3 +142,16 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Fix Implemented:**  
 - **Final Validation Date:**  
 - **Final Status:** Done / Needs Further Review  
+
+
+Review Process (Kanban Flow in GitHub)
+For tracking reviews and fixes, we can use GitHub Kanban projects:
+
+Issue Creation: A separate issue is created for each file to be reviewed.
+Review Branch: The reviewer creates a branch, conducts the review, and pushes changes.
+Review Status: The branch is moved to "Reviewed" in the Kanban board.
+Development Fixes: The developer pulls the branch, moves it to "In Progress", makes necessary changes, commits, and pushes.
+Request Review: Once fixes are made, the branch moves to "Request Review" for final verification.
+Final Check: The reviewer does a final check.
+If approved, the branch is merged and moved to "Done".
+If additional changes are required, the branch moves back to "Reviewed" with comments.
