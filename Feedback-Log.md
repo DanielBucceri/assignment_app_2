@@ -7,17 +7,18 @@ This log tracks documentation reviews, feedback received, and improvements made.
 ### First `Review
 
 - **Checked By:** Daniel  
-- **Date:** 2025-03-05  
+- **Date:** 5/3/25  
 - **Feedback Given:**
   - Missing docstrings for GameSession, MediumGameMode, and HardGameMode explaining their purpose  
   - Methods inside GameSession don’t have docstrings describing what they do, their parameters, and return values  
   - TRIVIA_API_URL and PROFILE_FILE constants aren’t explained  
-  - 
 - **Assigned Developer:** Daniel  
 - **Actions Taken:**
-  -
-  -
+  - Added detailed docstrings for the GameSession classes methods and thier attributes.
+  - TRIVIA_API_URL and PROFILE_FILE constants to clarify their usage.
+  - Identified and modified bug in invalid input handling in the play_game method. Replaced the original return false (which crash the game on incorrect) with self.incorrect += 1 regiter as incrrect and move on.
 - **Date Actioned:**
+- 8/3/25
 
 ### Second Review
 - **Checked By:**  
@@ -35,14 +36,16 @@ This log tracks documentation reviews, feedback received, and improvements made.
 ### First Review File: `player.py`
 
 - **Checked By:**  Daniel
-- **Date:**  
+- **Date:**  8/3/25
 - **Feedback Given:**  
 - load_or_create_player docstring does not describe parameters or return values  
 - Player class lacks docstrings describing the purpose of each method  
 - Need to clarify what happens when load_or_create_player is called with a non existing username
 - Missing explanation of the update_preferences flow  
-- **Assigned Developer:**  Jared
+- display_history does not show a no user found error
+- **Assigned Developer:**  Daniel
 - **Actions Taken:**  
+- 
 - **Date Actioned:**  
 
 ### Second Review

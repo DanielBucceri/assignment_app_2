@@ -7,6 +7,13 @@ LEADERBOARD_FILE = "data/Leaderboard.json"
 def load_or_create_player(username):
     """
     Load an existing player by username from JSON or create a new one if not found.
+    
+    Parameters: 
+     username (str): Username of the player.
+
+    Returns:
+     Player: The loaded player if existing username found or a newly created one with default value preferences.
+    
     """
     data = read_json(PROFILE_FILE)
     # Search for the matching username
@@ -35,6 +42,16 @@ def load_or_create_player(username):
     return new_player
 
 class Player:
+    """
+    Represents a player in the game.
+
+    Attributes:
+     username (str): The players username.
+     difficulty (str): The difficulty level preference.
+     category (int): The category ID for the chosen questions category.
+     high_score (int): The player's highest recorded  stored in json.
+     history (list): A list of dictionaries representing past game results.
+    """
     def __init__(
         self, username, difficulty="medium", high_score=0, category=19, history=[]):
         self.username = username
@@ -44,6 +61,15 @@ class Player:
         self.history = history
 
     def update_preferences(self):
+        """
+        Updates the players game preferences.
+
+        Prompts the user to select a difficulty level and category,
+        then updates the stored player preferences in the profile JSON.
+
+        Returns:
+        - bool: True if update is successful, False if the user is not found.
+        """
         difficulty_input = int(
             input(
                 "Enter corresponding number to select difficulty."
@@ -78,9 +104,9 @@ class Player:
 
     def display_high_score(self):
         """
-        Opens the profile.json file, looks for the player's
-        username stored in the instance,
-        and displays their high score
+        Opens the profile.json file, looks for the players
+        username stored in the Json file,
+        and displays their high score if found else displays an error message.
         """
         data = read_json(PROFILE_FILE)
         if data:
@@ -103,8 +129,8 @@ class Player:
     def display_history(self):
         """
         Opens the profile.json file,
-        looks for the player's username stored in the instance,
-        and displays their history in a table format using tabluate.
+        looks for the players username stored in the instance,
+        and displays their history in a table format using tabluate. If not found displays an error message.
         """
         data = read_json(PROFILE_FILE)
         if data:
@@ -118,14 +144,20 @@ class Player:
                 None,
             )
             # create the table data for tabulate
+        if not player_data:
+            print(f"\nError: Player '{self.username}' not found in profile data.")
+            return  # Exit function early if player is missing
+
         if player_data.get("history"):
             print(f"\nPlayer: {player_data['username']}\nHistory:")
-            # Prepare table data
             df = pd.DataFrame(player_data.get("history"))
             from tabulate import tabulate
-
             print(tabulate(df, headers="keys", tablefmt="grid"))
         else:
             print(f"\nNo history found for player '{self.username}'.")
-        input("\nPress Enter to continue....")
+            
+    input("\nPress Enter to continue....")
+
+
+
 

@@ -71,7 +71,7 @@ class GameSession:
                     print(f"\nQuestion: {question}")
                     choices = q["incorrect_answers"]
                     choices.append(q["correct_answer"])
-                    random.shuffle(choices)
+                    random.shuffle(choices)                   
                     for i, option in enumerate(choices, 1):
                         print(f"{i} {option}")
                     try:
