@@ -4,8 +4,33 @@ from game_session import GameSession, MediumGameMode, HardGameMode
 
 
 def main():
+    """
+    Main function to run the game.
+    
+    -asks player to enter their username then loads or creates a player
+    -instantiates a game session based on the player's difficulty level
+    -displays a menu for the player to choose an option  yo play the game, update preferences, display leaderboard, display history, display high score, or quits the game
+    
+    Expected inputs:
+    - username: str
+    - menu choice: str corresponding to the menu options
+    
+    Outpus:
+    - prints the game menu
+    - prints the leaderboard
+    - prints the players history
+    - prints the players high score
+    
+    Error handling:
+    - if an invalid choice is entered, the function prints "Invalid choice" and prompts the user to enter a valid choice
+    
+    """
+    #asks the user to enter a username and remove extra spaces
     username = input("Enter your username: ").strip()
+    
+    #loads existing player or creates a new player
     player = load_or_create_player(username)
+    
     #instantiate game session based on difficulty else default game
     if player.difficulty.lower() == "medium":
         game = MediumGameMode(player)
