@@ -21,15 +21,20 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - 8/3/25
 
 ### Second Review
-- **Checked By:**  
-- **Date:**  
+
+- **Checked By:**  Daniel
+- **Date:**  12/3/25
 - **Final Feedback:**  
-  -  
-- **Fix Needed?** Yes / No  
+- Docstrings for GameSession, MediumGameMode, and HardGameMode are now present and clearly describe their purpose.  
+- Method docstrings in GameSession now describe functionality, parameters, and return values.  
+- TRIVIA_API_URL and PROFILE_FILE constants now have explanations clarifying their usage.  
+- Invalid input handling bug in play_game method is now fixed. The incorrect input no longer crashes the game and is correctly counted as an incorrect answer.  
+
+- **Fix Needed?** Yes / No  | No
 - **Assigned Developer:**  
 - **Fix Implemented:**  
 - **Final Validation Date:**  
-- **Final Status:** Done / Needs Further Review  
+- **Final Status:** Done / Needs Further Review  | Done
 
 ---
 
@@ -89,15 +94,18 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Date Actioned:**  
 
 ### Second Review
-- **Checked By:**  
-- **Date:**  
+
+- **Checked By:** Daniel
+- **Date:**  12/3/25
 - **Final Feedback:**  
-  -  
-- **Fix Needed?** Yes / No  
+- The main function now includes a clear docstring summarizing its responsibilities, expected input/output, player loading process, and game type selection.  
+- Inline comments have been added in the match case, explaining what each user choice triggers, making it easier to debug and modify.  
+- Error handling and invalid input responses have been clarified, improving user guidance and validation.  
+- **Fix Needed?** Yes / No | No 
 - **Assigned Developer:**  
 - **Fix Implemented:**  
-- **Final Validation Date:**  
-- **Final Status:** Done / Needs Further Review  
+- **Final Validation Date:** 12/3/25
+- **Final Status:** Done / Needs Further Review  | No
 
 ---
 
@@ -153,24 +161,21 @@ This log tracks documentation reviews, feedback received, and improvements made.
 
 ### Second Review
 
-- Differences in game modes are now clearly described under Game Modes.  
-- Explanation for "No Questions Found" error is now in Troubleshooting, detailing potential causes and solutions.  
-- Descriptions for imported packages have been added under Third-Party Libraries and Licenses, clarifying their purpose.  
-- User data storage and deletion/reset process is now clearly outlined in User Data.  
-- License declaration is now present under License, specifying MIT terms.  
-- Clear problem statement and target audience have been added under Target Users & Problem Statement.  
-- Differences from existing trivia platforms are now explained in How This Differs from Similar Projects.  
-
-
 - **Checked By:** Daniel
 - **Date:**  
 - **Final Feedback:**
-  -  
-- **Fix Needed?** Yes / No  
-- **Assigned Developer:**  
+- Differences in game modes are now clearly described under Game Modes.  
+- Explanation for "No Questions Found" error is now in troubleshooting, detailing potential causes and solutions.  
+- Descriptions for imported packages have been added under third party Libraries and Licenses, clarifying their purpose.  
+- User data storage and deletion/reset process is now clearly outlined in User Data.  
+- License declaration is now present under License, specifying MIT terms.  
+- Clear problem statement and target audience have been added under target users & problem statement.  
+- Differences from existing trivia platforms are now explained in how this differs from similar projects.  
+- **Fix Needed?** Yes / No  | no
+- **Assigned Developer:**  Daniel
 - **Fix Implemented:**  
-- **Final Validation Date:**  
-- **Final Status:** Done / Needs Further Review  
+- **Final Validation Date:**  12/3/25
+- **Final Status:** Done / Needs Further Review  | Done
 
 ### Review Process (Kanban Flow in GitHub)
 
