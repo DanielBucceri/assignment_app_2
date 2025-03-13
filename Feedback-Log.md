@@ -101,7 +101,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - The main function now includes a clear docstring summarizing its responsibilities, expected input/output, player loading process, and game type selection.  
 - Inline comments have been added in the match case, explaining what each user choice triggers, making it easier to debug and modify.  
 - Error handling and invalid input responses have been clarified, improving user guidance and validation.  
-- **Fix Needed?** Yes / No | No 
+- **Fix Needed?** Yes / No | No
 - **Assigned Developer:**  
 - **Fix Implemented:**  
 - **Final Validation Date:** 12/3/25
@@ -114,9 +114,12 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Checked By:**  Daniel
 - **Date:**  8/03/25
 - **Feedback Given:**  
-  - current function doctrings are uindescriptive and missing parameters, return values and descriptive behavior explanation
-  - missing docstring for read_json()
-  - inline comments missing to explain error handling and user feedback on each function
+- Missing docstrings for read_json and save_json functions explaining their purpose and expected behavior.
+- display_leaderboard function lacks a docstring detailing its process, including sorting, writing to a file, and displaying data.
+- No explanation of PROFILE_FILE and LEADERBOARD_FILE constants.  
+- choose_from_menu function should clarify its return values selected category name and corresponding number.  
+- No error handling in choose_from_menu if the user enters a number that isn't listed in the categories.  
+
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
 - **Date Actioned:**  
@@ -124,7 +127,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 ### Second Review
 - **Checked By:**  
 - **Date:**  
-- **Final Feedback:**  
+- **Final Feedback:**
   -  
 - **Fix Needed?** Yes / No  
 - **Assigned Developer:**  
