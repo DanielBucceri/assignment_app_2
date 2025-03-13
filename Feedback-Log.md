@@ -45,8 +45,6 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - display_history does not show a no user found error
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
-- 
-- **Date Actioned:**  11/3/25
 - Updated load_or_create_player docstring to include parameter, return type details and clarify username case insensitivity
 - Added detailed docstrings for all Player class methods update_preferences, display_high_score and display_history
 - clarified when load_or_create_player is called with a non existing username new user is created with default settings
@@ -54,6 +52,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - fixed bug in display_history converting username to lower. Usernames are case sensitive. removed .toLower
 - Corrected display_history method to include error handling and message for the scenario where a user isn't found in the JSON file
 - Committed all changes to the player.py_review branch, pushed to GitHub, and moved the issue into "Request Review" column in the Kanban project for final review
+- **Date Actioned:**  11/3/25
 
 ### Second Review
 
@@ -82,19 +81,21 @@ This log tracks documentation reviews, feedback received, and improvements made.
   - No description of how errors and valdiation are handled. Requires description on process if user inputs invalid info and any feedback given to the user.
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
-- Added a detailed docstring to the main function, describing its purpose, expected user inputs/outputs, and error handling. 
+- Added a detailed docstring to the main function, describing its purpose, expected user inputs/outputs, and error handling.
 - added comments explaining how the username is read, trimmed, and how the correct GameSession subclass is instantiated.
 - Documented error handling for invalid menu choices both in the docstring and in the code using print("Invalid choice.").
-- **Date Actioned:** 11/3/25 
+- moved to kanban requesting review
+- **Date Actioned:** 11/3/25
 
 ### Second Review
 
-- **Checked By:** Daniel 
+- **Checked By:** Daniel
 - **Date:**  11/3/25
 - **Final Feedback:**  
   - The main function now has a clear docstring describing its purpose, expected user inputs/outputs, and error handling.
   - Comments clarify how the username is read and trimmed, as well as how the correct GameSession subclass is instantiated.
   - The error handling for invalid menu choices is explained in the docstring
+  - Can be merged and complete.
 - **Fix Needed?** Yes / No   | No
 - **Assigned Developer:**  
 - **Fix Implemented:**  
@@ -116,9 +117,9 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Date Actioned:**  
 
 ### Second Review
-- **Checked By:**  
-- **Date:**  
-- **Final Feedback:**  
+- **Checked By:**
+- **Date:**
+- **Final Feedback:**
   -  
 - **Fix Needed?** Yes / No  
 - **Assigned Developer:**  
@@ -135,8 +136,11 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Checked By:**  Daniel
 - **Date:**  8/03/25
 - **Feedback Given:**
-  - Differences in game modes not clearly described. Eg. "Easy = 15 second time limit and 1 point per correct answer"
-  - missing explanation for no "errors found error". Would benfit from an explanation of potential causes and troubleshooting steps
+  - Missing target user section and problem statement.
+  - Missing reference to a similar project such as kahoot
+  - User stories not included
+  - Missing explanation for API failure troubleshooting "If questions don’t load, adjust category/difficulty"
+  - Ethical section needs privacy details such as "Data is stored locally. Users can delete profile.json to remove their info"
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
 - **Date Actioned:**  
@@ -152,7 +156,6 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Final Validation Date:**  
 - **Final Status:** Done / Needs Further Review  
 
-
 Review Process (Kanban Flow in GitHub)
 For tracking reviews and fixes, we can use GitHub Kanban projects:
 
@@ -163,4 +166,4 @@ Development Fixes: The developer pulls the branch, moves it to "In Progress", ma
 Request Review: Once fixes are made, the branch moves to "Request Review" for final verification.
 Final Check: The reviewer does a final check.
 If approved, the branch is merged and moved to "Done".
-If additional changes are required, the branch moves back to "Reviewed" with comments.
+If additional changes are required, the branch moves back to "Reviewed" with comments
