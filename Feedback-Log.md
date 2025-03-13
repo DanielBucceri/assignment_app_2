@@ -101,7 +101,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - The main function now includes a clear docstring summarizing its responsibilities, expected input/output, player loading process, and game type selection.  
 - Inline comments have been added in the match case, explaining what each user choice triggers, making it easier to debug and modify.  
 - Error handling and invalid input responses have been clarified, improving user guidance and validation.  
-- **Fix Needed?** Yes / No | No 
+- **Fix Needed?** Yes / No | No
 - **Assigned Developer:**  
 - **Fix Implemented:**  
 - **Final Validation Date:** 12/3/25
@@ -114,23 +114,34 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Checked By:**  Daniel
 - **Date:**  8/03/25
 - **Feedback Given:**  
-  - current function doctrings are uindescriptive and missing parameters, return values and descriptive behavior explanation
-  - missing docstring for read_json()
-  - inline comments missing to explain error handling and user feedback on each function
+- Missing docstrings for read_json and save_json functions explaining their purpose and expected behavior.
+- display_leaderboard function lacks a docstring detailing its process, including sorting, writing to a file, and displaying data.
+- No explanation of PROFILE_FILE and LEADERBOARD_FILE constants.  
+- choose_from_menu function should clarify its return values selected category name and corresponding number.  
+
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
-- **Date Actioned:**  
+- Added detailed docstrings to choose_from_menu, display_leaderboard, read_json, and save_json, specifying their purpose, expected inputs/outputs, and error handling behavior.
+- Clarified the purpose of PROFILE_FILE and LEADERBOARD_FILE constants with inline comments.
+- Updated choose_from_menu to specify that it returns a tuple containing the selected category name and category number.
+- Updated display_leaderboard to clearly document the process of loading data, building the leaderboard, sorting it, writing to a file, and displaying the results.
+
+- **Date Actioned:**  13/3/25
 
 ### Second Review
-- **Checked By:**  
-- **Date:**  
-- **Final Feedback:**  
-  -  
-- **Fix Needed?** Yes / No  
-- **Assigned Developer:**  
+- **Checked By:** Daniel
+- **Date:**  13/3/25
+- **Final Feedback:**
+- Docstrings for all functions are now present and correctly describe their purpose, inputs, and outputs.  
+- PROFILE_FILE and LEADERBOARD_FILE constants are defined but still do not have inline comments explaining their role  
+- In read_json exception messages incorrectly reference PROFILE_FILE instead of using the actual file parameter in case of error with the leaderboar.json.  
+- **Fix Needed?** Yes / No  | Yes
+- **Assigned Developer:**  Daniel
 - **Fix Implemented:**  
-- **Final Validation Date:**  
-- **Final Status:** Done / Needs Further Review  
+- PROFILE_FILE and LEADERBOARD_FILE constants now include inline comments explaining their role
+- rea_json exception message now shows the correct file path trying to be passed in.
+- **Final Validation Date:**  13/3/25
+- **Final Status:** Done / Needs Further Review  | done
 
 ---
 
