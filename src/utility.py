@@ -10,6 +10,9 @@ def choose_from_menu():
     """
     Displays a menu of key-value pairs and prompts the user
     to choose an option by entering the corresponding number.
+    
+    Returns:
+        tuple:" a tuple containing the selected category name and the corresponding number.
     """
     # Define the key-value pairs
     categories = {
@@ -60,7 +63,10 @@ def choose_from_menu():
 
 def display_leaderboard():
     """
-    Adds usernames and high scores to leaderboard json in descending order
+    loads data from profile.json, sorts it by high_score in descending order,
+    writes the sorted data to Leaderboard.json, and displays the leaderboard in the terminal using tabulate.
+    
+    Retruns: List of the sorted leaderboard data or none if errror occurs.
     """
     try:
         # Step 1: Load data from profile.json
@@ -95,6 +101,19 @@ def display_leaderboard():
 
 
 def read_json(file):
+    """
+    Reads data from a JSON file.
+    
+    args:
+        file: str: The path to the JSON file.   
+    
+    Returns:
+        dict: The data loaded from the JSON file.
+    
+    raises:
+        FileNotFoundError: If the file does not exist.
+        json.JSONDecodeError: If the file is not a valid JSON file. 
+    """
     try:
         # Open and load the JSON file
         with open(file, "r") as f:
@@ -109,6 +128,12 @@ def read_json(file):
 def save_json(file_path, data):
     """
     Saves data to a JSON file.
+    
+    args: file_path: str: The path to the JSON file.
+        data: dict: The data to save to the file.
+        
+    raises:
+        Exception: If an error occurs while saving the data.    
     """
     try:
         with open(file_path, "w") as file:

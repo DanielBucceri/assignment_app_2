@@ -118,11 +118,15 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - display_leaderboard function lacks a docstring detailing its process, including sorting, writing to a file, and displaying data.
 - No explanation of PROFILE_FILE and LEADERBOARD_FILE constants.  
 - choose_from_menu function should clarify its return values selected category name and corresponding number.  
-- No error handling in choose_from_menu if the user enters a number that isn't listed in the categories.  
 
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
-- **Date Actioned:**  
+- Added detailed docstrings to choose_from_menu, display_leaderboard, read_json, and save_json, specifying their purpose, expected inputs/outputs, and error handling behavior.
+- Clarified the purpose of PROFILE_FILE and LEADERBOARD_FILE constants with inline comments.
+- Updated choose_from_menu to specify that it returns a tuple containing the selected category name and category number.
+- Updated display_leaderboard to clearly document the process of loading data, building the leaderboard, sorting it, writing to a file, and displaying the results.
+
+- **Date Actioned:**  13/3/25
 
 ### Second Review
 - **Checked By:**  
