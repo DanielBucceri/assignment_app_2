@@ -134,10 +134,12 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Final Feedback:**
 - Docstrings for all functions are now present and correctly describe their purpose, inputs, and outputs.  
 - PROFILE_FILE and LEADERBOARD_FILE constants are defined but still do not have inline comments explaining their role  
-- In read_json, exception messages incorrectly reference PROFILE_FILE instead of using the actual file parameter in case of error with the leaderboar.json.  
+- In read_json exception messages incorrectly reference PROFILE_FILE instead of using the actual file parameter in case of error with the leaderboar.json.  
 - **Fix Needed?** Yes / No  | Yes
 - **Assigned Developer:**  Daniel
 - **Fix Implemented:**  
+- PROFILE_FILE and LEADERBOARD_FILE constants no include inline comments explaining their role
+- rea_json exception message now shows the correct file path trying to be passed in.
 - **Final Validation Date:**  
 - **Final Status:** Done / Needs Further Review  
 

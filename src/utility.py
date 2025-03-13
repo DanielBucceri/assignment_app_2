@@ -119,9 +119,9 @@ def read_json(file):
             data = json.load(f)
         return data
     except FileNotFoundError:
-        return print(f"Error: File '{PROFILE_FILE}' not found.")
+        return print(f"Error: File '{file}' not found.")
     except json.JSONDecodeError:
-        return print(f"Error: File '{PROFILE_FILE}' is not a valid JSON file.")
+        return print(f"Error: File '{file}' is not a valid JSON file.")
 
 
 def save_json(file_path, data):
