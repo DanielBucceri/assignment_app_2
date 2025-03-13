@@ -79,9 +79,13 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Feedback Given:**  
   - main function missing docstring summarizing  responsibilities as entry point, expected input/output, how it loads the player and how it selects a game type.
   - missing documentation in match case explaining what flow is triggered from each case user choice making it hard to debug or modify in the future. Inline comments required for each case describing what is triggered
-  - No description of how errors and valdiation are handled. Requires description on process if user inputs invalid info and any feedback given to the user.
+  - expand on invalid input error and user prompt to better clarity
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**  
+- Added a docstring to the main function summarizing its role as the entry point, expected input/output, player loading process, and game type selection.  
+- Added inline comments in the match case to explain the flow triggered by each user choice, improving readability and ease of debugging.  
+- Documented how errors and validation are handled, including the process for handling invalid user input and the feedback provided to the user.  
+
 - **Date Actioned:**  
 
 ### Second Review
@@ -130,13 +134,26 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Date:**  8/03/25
 - **Feedback Given:**
   - Differences in game modes not clearly described. Eg. "Easy = 15 second time limit and 1 point per correct answer"
-  - missing explanation for no "errors found error". Would benfit from an explanation of potential causes and troubleshooting steps
+  - missing explanation for "no questions found error". Would benfit from an explanation of potential causes and troubleshooting steps
+  - Missing descriptions for imported packages, making it unclear why each dependency is required.
+  - User data section does not specify where data is stored or how users can delete/reset their profiles. Needs a clear explanation of profile.json storage, usage, and deletion instructions.  
+  - No license declaration in the README. Needs a License section to clarify under what terms the project can be used or modified.  
+  - No clear problem statement or target audience.
+  - differences from existing trivia platforms not defined.
 - **Assigned Developer:**  Daniel
-- **Actions Taken:**  
-- **Date Actioned:**  
+- **Actions Taken:**
+- Added a game mode breakdown in the Usage section, detailing time limits and scoring.  
+- Explained the "No Questions Found" error in Troubleshooting, listing causes and solutions.  
+- Described each imported package in the Third-Party Libraries and Licenses section.  
+- Clarified User Data storage, collected information, and profile deletion steps.  
+- Added a License section specifying MIT License terms and usage rights.  
+- Defined the target audience and problem statement.  
+- Highlighted differences from platforms like Kahoot, emphasizing offline play and local tracking.  
+- **Date Actioned:** 12/3/25
 
 ### Second Review
-- **Checked By:**  
+
+- **Checked By:** Daniel 
 - **Date:**  
 - **Final Feedback:**  
   -  
@@ -146,8 +163,8 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Final Validation Date:**  
 - **Final Status:** Done / Needs Further Review  
 
+### Review Process (Kanban Flow in GitHub)
 
-Review Process (Kanban Flow in GitHub)
 For tracking reviews and fixes, we can use GitHub Kanban projects:
 
 Issue Creation: A separate issue is created for each file to be reviewed.
@@ -157,4 +174,4 @@ Development Fixes: The developer pulls the branch, moves it to "In Progress", ma
 Request Review: Once fixes are made, the branch moves to "Request Review" for final verification.
 Final Check: The reviewer does a final check.
 If approved, the branch is merged and moved to "Done".
-If additional changes are required, the branch moves back to "Reviewed" with comments.
+If additional changes are required, the branch moves back to "Reviewed" with comment

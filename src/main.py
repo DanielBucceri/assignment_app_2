@@ -48,20 +48,27 @@ def main():
 
         match choice:
             case "1":
+                # Start a game session based on the chosen difficulty
                 game.play_game()
             case "2":
+                 # Allow the player to update their preferences in the profile.json e.g difficulty, category
                 player.update_preferences()
             case "3":
+                # Display the leaderboard.json with top player scores
                 display_leaderboard()
             case "4":
+                # Show the player's game history from profile.json, including past scores and games played
                 player.display_history()
             case "5":
+                # Display the players highest score from profile.json
                 player.display_high_score()
             case "6":
+                # Exit the game loop and ends the session
                 print("Cya!")
                 break
             case _:
-                print("Invalid choice.")
+                # Handle invalid input and prompt the user again
+                print("Invalid choice. Please select a valid option.")
 
 if __name__ == "__main__":
     main()

@@ -147,7 +147,6 @@ You are free to use, modify, and distribute this software
 ## Troubleshooting
 
 **Error: File Not Found**
-
 - Ensure `profile.json` and `Leaderboard.json` exist in the `data/` folder.
 - If missing, the game automatically generates a new, empty profile file upon startup
 **Corrupted Profile or Leaderboard Data:**  
