@@ -2,9 +2,8 @@ import json
 from tabulate import tabulate
 import pandas as pd
 
-PROFILE_FILE = "data/profile.json"
-LEADERBOARD_FILE = "data/Leaderboard.json"
-
+PROFILE_FILE = "data/profile.json" # File storing player profiles and scores
+LEADERBOARD_FILE = "data/Leaderboard.json" # File storing the sorted leaderboard data
 
 def choose_from_menu():
     """

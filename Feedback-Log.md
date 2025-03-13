@@ -129,12 +129,14 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Date Actioned:**  13/3/25
 
 ### Second Review
-- **Checked By:**  
-- **Date:**  
+- **Checked By:** Daniel
+- **Date:**  13/3/25
 - **Final Feedback:**
-  -  
-- **Fix Needed?** Yes / No  
-- **Assigned Developer:**  
+- Docstrings for all functions are now present and correctly describe their purpose, inputs, and outputs.  
+- PROFILE_FILE and LEADERBOARD_FILE constants are defined but still do not have inline comments explaining their role  
+- In read_json, exception messages incorrectly reference PROFILE_FILE instead of using the actual file parameter in case of error with the leaderboar.json.  
+- **Fix Needed?** Yes / No  | Yes
+- **Assigned Developer:**  Daniel
 - **Fix Implemented:**  
 - **Final Validation Date:**  
 - **Final Status:** Done / Needs Further Review  
