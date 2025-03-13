@@ -60,7 +60,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Checked By:** Daniel
 - **Date:**  11/5/25
 - **Final Feedback:**
-  -  All requested fixes have been correctly implemented
+  - All requested fixes have been correctly implemented
   - Docstrings are now clear and properly describe function behavior
   - Error handling in display_history is implemented, preventing incorrect lookups
   - Username case sensitivity is now correctly handled
@@ -153,9 +153,18 @@ This log tracks documentation reviews, feedback received, and improvements made.
 
 ### Second Review
 
-- **Checked By:** Daniel 
+- Differences in game modes are now clearly described under Game Modes.  
+- Explanation for "No Questions Found" error is now in Troubleshooting, detailing potential causes and solutions.  
+- Descriptions for imported packages have been added under Third-Party Libraries and Licenses, clarifying their purpose.  
+- User data storage and deletion/reset process is now clearly outlined in User Data.  
+- License declaration is now present under License, specifying MIT terms.  
+- Clear problem statement and target audience have been added under Target Users & Problem Statement.  
+- Differences from existing trivia platforms are now explained in How This Differs from Similar Projects.  
+
+
+- **Checked By:** Daniel
 - **Date:**  
-- **Final Feedback:**  
+- **Final Feedback:**
   -  
 - **Fix Needed?** Yes / No  
 - **Assigned Developer:**  
