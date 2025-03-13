@@ -138,10 +138,10 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - **Fix Needed?** Yes / No  | Yes
 - **Assigned Developer:**  Daniel
 - **Fix Implemented:**  
-- PROFILE_FILE and LEADERBOARD_FILE constants no include inline comments explaining their role
+- PROFILE_FILE and LEADERBOARD_FILE constants now include inline comments explaining their role
 - rea_json exception message now shows the correct file path trying to be passed in.
-- **Final Validation Date:**  
-- **Final Status:** Done / Needs Further Review  
+- **Final Validation Date:**  13/3/25
+- **Final Status:** Done / Needs Further Review  | done
 
 ---
 
