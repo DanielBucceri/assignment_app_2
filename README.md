@@ -122,6 +122,10 @@ This project uses the following third-party libraries:
 
 All third-party libraries are used in compliance with their respective licenses. The project is non-commercial and educational, which aligns with the permissions defined by these licenses.
 
+This project follows ethical software development standards by prioritizing user privacy and responsible data handling
+
+- The project aligns with Australian Privacy Principles (APP 6: Use & Disclosure of Personal Information) and GDPR Article 5(1)(c) (Data Minimization) for EU to ensure ethical data handling.
+
 **User Data**:
 
 - User data is stored locally in `profile.json`.

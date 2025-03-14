@@ -1,4 +1,6 @@
-# Documentation Feedback Log - Trivia Game Project
+# Important note! : This Project was completed solo due to group members withdrawing from the course. The following is a hypothetical colaboration scenario
+
+## Documentation Feedback Log - Trivia Game Project
 
 This log tracks documentation reviews, feedback received, and improvements made.
 
@@ -49,9 +51,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - Missing explanation of the update_preferences flow  
 - display_history does not show a no user found error
 - **Assigned Developer:**  Daniel
-- **Actions Taken:**  
-- 
-- **Date Actioned:**  11/3/25
+- **Actions Taken:**
 - Updated load_or_create_player docstring to include parameter, return type details and clarify username case insensitivity
 - Added detailed docstrings for all Player class methods update_preferences, display_high_score and display_history
 - clarified when load_or_create_player is called with a non existing username new user is created with default settings
@@ -59,6 +59,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - fixed bug in display_history converting username to lower. Usernames are case sensitive. removed .toLower
 - Corrected display_history method to include error handling and message for the scenario where a user isn't found in the JSON file
 - Committed all changes to the player.py_review branch, pushed to GitHub, and moved the issue into "Request Review" column in the Kanban project for final review
+- **Date Actioned:**  11/3/25
 
 ### Second Review
 
@@ -159,6 +160,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
   - No license declaration in the README. Needs a License section to clarify under what terms the project can be used or modified.  
   - No clear problem statement or target audience.
   - differences from existing trivia platforms not defined.
+  - Privacy focus is mentioned but no specific references of privacy laws
 - **Assigned Developer:**  Daniel
 - **Actions Taken:**
 - Added a game mode breakdown in the Usage section, detailing time limits and scoring.  
@@ -168,6 +170,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 - Added a License section specifying MIT License terms and usage rights.  
 - Defined the target audience and problem statement.  
 - Highlighted differences from platforms like Kahoot, emphasizing offline play and local tracking.  
+- Expanded ethical and legal compliance section to include relevant privacy laws
 - **Date Actioned:** 12/3/25
 
 ### Second Review
@@ -193,7 +196,7 @@ This log tracks documentation reviews, feedback received, and improvements made.
 For tracking reviews and fixes, we can use GitHub Kanban projects:
 
 Issue Creation: A separate issue is created for each file to be reviewed.
-Review Branch: The reviewer creates a branch, conducts the review, and pushes changes.
+Review Branch: The reviewer creates a branch, conducts the review, fill the feedback log and pushes changes.
 Review Status: The branch is moved to "Reviewed" in the Kanban board.
 Development Fixes: The developer pulls the branch, moves it to "In Progress", makes necessary changes, commits, and pushes.
 Request Review: Once fixes are made, the branch moves to "Request Review" for final verification.
